@@ -1,5 +1,12 @@
 package com.sttapp.speech_to_text.repository;
 
-public class TranscriptionRepository {
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.sttapp.speech_to_text.model.Transcription;
+
+public interface TranscriptionRepository
+extends JpaRepository<
+        Transcription,
+        Long
+> {
 }

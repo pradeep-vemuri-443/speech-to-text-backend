@@ -1,10 +1,26 @@
 package com.sttapp.speech_to_text.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Transcription {
+
+    @Id
+    @GeneratedValue(
+            strategy =
+            GenerationType.IDENTITY
+    )
+    private Long id;
 
     private String fileName;
 
     private String transcript;
+
+    public Transcription() {
+    }
 
     public Transcription(
             String fileName,
@@ -12,6 +28,10 @@ public class Transcription {
     ) {
         this.fileName = fileName;
         this.transcript = transcript;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getFileName() {
