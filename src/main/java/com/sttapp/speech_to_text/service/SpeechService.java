@@ -1,27 +1,29 @@
 package com.sttapp.speech_to_text.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sttapp.speech_to_text.dto.TranscriptResponse;
 import com.sttapp.speech_to_text.model.Transcription;
+import com.sttapp.speech_to_text.repository.TranscriptionRepository;
 
 @Service
 public class SpeechService {
 
-    private final List<Transcription> history =
-            new ArrayList<>();
+    @Autowired
+    private TranscriptionRepository repository;
 
     public TranscriptResponse convertToText(
             String fileName
     ) {
 
         String transcript =
-                "Transcription generated for: "+fileName;
+                "Transcription generated for: "
+                        + fileName;
 
-        history.add(
+        repository.save(
                 new Transcription(
                         fileName,
                         transcript
@@ -36,6 +38,9 @@ public class SpeechService {
     }
 
     public List<Transcription> getHistory() {
-        return history;
+
+        return repository.findAll();
+
     }
+
 }
