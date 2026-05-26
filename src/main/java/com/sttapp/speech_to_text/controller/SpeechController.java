@@ -89,4 +89,13 @@ public class SpeechController {
                 .testConnection();
 
         }
+        @GetMapping("/assembly-test")
+        public Object assembly() {
+
+        return assemblyService
+                .uploadFile(
+                        "uploads/test.mp3"
+                );
+
+        }
 }
