@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sttapp.speech_to_text.dto.TranscriptResult;
 import com.sttapp.speech_to_text.service.AssemblyService;
 import com.sttapp.speech_to_text.service.SpeechService;
 
@@ -95,6 +96,29 @@ public class SpeechController {
         return assemblyService
                 .uploadFile(
                         "uploads/test.mp3"
+                );
+
+        }
+        @GetMapping(
+        "/transcribe-test"
+        )
+        public Object transcribe() {
+
+        String url =
+                assemblyService
+                        .uploadFile(
+                                "uploads/test.mp3"
+                        );
+
+        TranscriptResult result =
+                assemblyService
+                        .transcribe(
+                                url
+                        );
+
+        return assemblyService
+                .getTranscript(
+                        result.id
                 );
 
         }
