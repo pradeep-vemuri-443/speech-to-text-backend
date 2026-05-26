@@ -42,5 +42,16 @@ public class SpeechService {
         return repository.findAll();
 
     }
+    public Object getById(
+        Long id
+        ) {
+
+        return repository
+                .findById(id)
+                .orElse(
+                        null
+                );
+
+        }
 
 }
