@@ -59,5 +59,8 @@ public class SpeechService {
                 repository.deleteById(id);
                 return "Deleted";
         }
+        public Long count() {
+                return repository.count();
+        }
 
 }

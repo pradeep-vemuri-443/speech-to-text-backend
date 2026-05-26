@@ -68,4 +68,15 @@ public class SpeechController {
         return speechService
                 .delete(id);
         }
+        @GetMapping(
+        "/count"
+        )
+        public Object count() {
+
+        return java.util.Map.of(
+                "count",
+                speechService.count()
+        );
+
+        }
 }
