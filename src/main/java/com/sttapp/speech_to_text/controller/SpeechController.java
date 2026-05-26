@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sttapp.speech_to_text.service.AssemblyService;
 import com.sttapp.speech_to_text.service.SpeechService;
 
 @RestController
@@ -21,6 +22,8 @@ public class SpeechController {
 
     @Autowired
     private SpeechService speechService;
+    @Autowired
+    private AssemblyService assemblyService;
 
     @PostMapping("/upload")
     public Object upload(
@@ -77,6 +80,13 @@ public class SpeechController {
                 "count",
                 speechService.count()
         );
+
+        }
+        @GetMapping("/test")
+        public Object test() {
+
+        return assemblyService
+                .testConnection();
 
         }
 }
