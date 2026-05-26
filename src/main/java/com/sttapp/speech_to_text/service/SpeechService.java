@@ -53,5 +53,11 @@ public class SpeechService {
                 );
 
         }
+        public String delete(
+                Long id
+        ) {
+                repository.deleteById(id);
+                return "Deleted";
+        }
 
 }
