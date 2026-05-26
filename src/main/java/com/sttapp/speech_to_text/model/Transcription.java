@@ -19,6 +19,8 @@ public class Transcription {
 
     private String transcript;
 
+    private String uploadedAt;
+
     public Transcription() {
     }
 
@@ -26,8 +28,16 @@ public class Transcription {
             String fileName,
             String transcript
     ) {
+
         this.fileName = fileName;
+
         this.transcript = transcript;
+
+        this.uploadedAt =
+                java.time.LocalDateTime
+                        .now()
+                        .toString();
+
     }
 
     public Long getId() {
@@ -40,5 +50,9 @@ public class Transcription {
 
     public String getTranscript() {
         return transcript;
+    }
+
+    public String getUploadedAt() {
+        return uploadedAt;
     }
 }
